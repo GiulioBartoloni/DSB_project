@@ -1,0 +1,11 @@
+pandas==3.0.6
+numpy==2.5.3
+liac-arff==2.5.0
+scikit-learn==1.9.1
+faiss-cpu==1.16.0
+sentence-transformers==6.2.0
+# CPU build is enough; on Linux install it first with
+#   pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+# to avoid downloading the CUDA libraries.
+torch==2.15.0
+ipykernel==7.4.0

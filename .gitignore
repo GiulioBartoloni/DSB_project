@@ -1,0 +1,12 @@
+# Python
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Data: the original dataset must not be shared, and the clean files and
+# embeddings are rebuilt by the code. Only our external lists are tracked.
+data/*
+!data/external/
+
+# Project specification
+lds_project_2026-2027.pdf

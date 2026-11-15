@@ -1,0 +1,92 @@
+--- truths.csv ---
+id (int): The dataset's own post id (not Truth Social's). Not unique because of some duplicate rows
+timestamp (str): When the post was created. 
+time_scraped (str): When the row was added to the dataset
+is_retruth (bool): The post is a ReTruth. t = true / f = false
+is_reply (bool): The post is a reply. t = true / f = false
+author (float): User who (re)posted it
+like_count (int): Likes at scrape time
+retruth_count (int): ReTruths at scrape time
+reply_count (int): Replies at scrape time
+text (str): Post text
+external_id (str): Truth Social's own post id (18 digits)
+url  (str): Link to the post
+truth_retruthed  (float): For a ReTruth: the original post it reposts
+
+
+
+--- users.xml ---
+id_user (int): The dataset's own user id,27 = @realDonaldTrump
+timestamp_user_creation (str): Month the account was created
+username (str): Handle
+follower_count (int): Followers at scrape time
+following_count (int): Accounts followed at scrape time
+profile_url (str): Link to the profile
+finished_follower_scrape (str): Followers fully scraped at least once
+finished_following_scrape (str): Following list fully scraped at least once
+finished_truth_scrape (str): Full post history scraped at least once
+
+
+
+--- follows.json ---
+follower (int): User who follows
+followed (int): User being followed
+
+
+
+--- quotes.json ---
+timestamp (datetime): When the quoting post was created
+quoted_user (int): Author of the quoted post
+quoting_user (int): Author of the quoting post
+quoting_truth (int): The quoting post
+quoted_truth_external_id (int): Truth Social id of the quoted post
+
+
+
+--- media.json ---
+id_media (int): Media id
+media_url (str): URL of the image or video file on Truth Social's file server
+truth_id (int): Post that contains the media
+media_id (int): Media id (copy of id_media)
+
+
+
+--- hashtags.json ---
+id_hashtag (int):Hashtag id
+first_seen (str): When the hashtag first appeared in the dataset (scrape time)
+hashtag (str): Tag text without the #
+truth_id (int): Post that uses the hashtag
+hashtag_id (int): Hashtag id (copy of id_hashtag)
+
+
+
+--- external_urls.json ---
+external_urls.json,(file),JSON (pandas column-oriented),"Outside links in posts, one row per (url, post) pair; 252,877 rows / 173,944 distinct URLs",Original external_urls table joined with its post-link table,
+external_urls.json,id_ext_url,int,URL id,Same values as url_id,
+external_urls.json,url,str,Full outside URL,6 rows hold a bare username instead of a URL,
+external_urls.json,truth_id,int,Post that contains the link,~87% are in truths,→ truths.id
+external_urls.json,url_id,int,URL id (copy of id_ext_url left over from the join),,
+
+
+
+--- subsample_events.xml ---
+index (int): Row number from the full table before subsampling
+event_id (int): Event id
+event_type (str): Kind of event -> CR = post created; LI = like; RET = ReTruth; REP = reply
+truth_id (int): Post the event refers to
+user_id (int): User who did the action; -1 = unknown user
+timestamp (str): When the event happened
+
+
+
+--- additional_truths.arff ---
+id (int): Truth Social post id
+timestamp (str): When the post was created
+text (str): Post text
+url (str): Link to the post
+reply_count (real): Replies at scrape time
+retruth_count (real): ReTruths at scrape time
+like_count (real): Likes at scrape time
+external_id (str): Truth Social post id (copy of id)
+author (real): User who posted it
+time_scraped (str): Scrape time (placeholder value)
